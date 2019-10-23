@@ -7,6 +7,7 @@ import Create from './Create';
 import Prices from './Prices';
 import CreateProduct from './CreateProduct';
 import LogIn from './LogIn';
+import Edit from './Edit';
 
 class App extends Component {
 
@@ -34,7 +35,7 @@ class App extends Component {
                 <Route path={'/create'} component={ Create }/>
                 <Route path={'/createproduct'} component={ CreateProduct }/>
                 <Route path={'/pricelist'} component={ Prices }/>
-                <Route path={'/edit/:id'} component={ Prices }/>
+                <Route path={'/edit/:id'} component={ Edit }/>
                 <Route path={'/list'} component={ List }/>
                 <Route path={'/'} exact render={() => <LogIn 
                   changeAuth={this.changeAuth}

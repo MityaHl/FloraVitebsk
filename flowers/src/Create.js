@@ -12,7 +12,8 @@ class Create extends Component {
         this.state = {
             orderData: {
                 date: '',
-                time: '',
+                timeFrom: '',
+                timeTo: '',
                 orderList: '',
                 orderPrice: '',
                 customer: '',
@@ -22,7 +23,7 @@ class Create extends Component {
                 address: '',
                 paymentMethod: '',
                 notes: ''
-            }
+            },
         }
         this.handleChange = this.handleChange.bind(this);
         this.saveOrder = this.saveOrder.bind(this);
@@ -51,12 +52,6 @@ class Create extends Component {
 
     saveOrder(e) {
         e.preventDefault();
-        this.setState({
-            orderData: {
-                ...this.state.orderData,
-                date: this.state.orderData.date.slice(0,9)  
-            }
-        });
         axios
             .post('https://flora-vitebsk.herokuapp.com/addOrder', this.state.orderData);
     }
@@ -85,7 +80,7 @@ class Create extends Component {
                             <div className="form-group">
                                 <h5>Время доставки (от/до):</h5>
                                 <div className="form-row">  
-                                    <input type="time" name="time" className="form-control col-2 ml-5px" value={this.state.orderData.time} onChange={this.handleChange}/>
+                                    <input type="time" name="timeFrom" className="form-control col-2 ml-5px" value={this.state.orderData.timeFrom} onChange={this.handleChange}/>
                                     <input type="time" name="timeTo" className="form-control col-2 ml-5px" value={this.state.orderData.timeTo} onChange={this.handleChange}/>
                                 </div>
                             </div>
@@ -163,7 +158,7 @@ class Create extends Component {
                             <h5>Способ оплаты: </h5>
                             <Multiselect
                                     data={[{id: 1, title:'Карта'}]}
-                                    valueField="id"
+                                    valueField="title"
                                     textField="title"
                                     onChange={value => {
                                         this.setState({

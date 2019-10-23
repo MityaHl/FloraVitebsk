@@ -8,11 +8,14 @@ class List extends Component {
         super(props);
         this.state = {
             orders: [], 
-            isResolve: false
+            isResolve: false,
+            findBtn: ''
         }
 
         this.promiseRequests = this.promiseRequests.bind(this);
         this.showPosts = this.showPosts.bind(this);
+        this.findBtnValue = this.findBtnValue.bind(this);
+        this.findByNumber = this.findByNumber.bind(this);
     }
 
     promiseRequests() {
@@ -29,7 +32,13 @@ class List extends Component {
                 });
         })
     }
-
+    
+    findBtnValue(e) {
+        this.setState({
+            findBtn: e.target.value
+        })
+    }
+    
     componentWillMount() {
         this.promiseRequests()
             .then(() => {
@@ -37,6 +46,19 @@ class List extends Component {
                     isResolve: true
                 });
             })
+    }
+
+    findByNumber() {
+        console.log(this.state.findBtn);
+        axios
+            .get('https://flora-vitebsk.herokuapp.com/findByCustomerNumber?customerNumber=' + this.state.findBtn)
+            .then(
+                response => {
+                    this.setState({
+                        orders: response.data
+                });
+                }
+            )
     }
 
     showPosts() {
@@ -53,8 +75,8 @@ class List extends Component {
             <div>
                 <div className="search container">
                     <div className="row  justify-content-around">
-                        <input className="form-control col-9" type="text" placeholder="Номер телефона заказчика"/>
-                        <button type="button" className="btn btn-warning col-2">Найти</button>
+                        <input className="form-control col-9" type="text" onChange={this.findBtnValue} placeholder="Номер телефона заказчика"/>
+                        <button type="button" className="btn btn-warning col-2" onClick={this.findByNumber}>Найти</button>
                     </div>
                 </div>
                  <table className="table table-bordered">
@@ -88,7 +110,7 @@ class List extends Component {
                                 Адрес
                             </th>
                             <th>
-                                Оплаты
+                                Тип платы
                             </th>
                             <th>
                                 Примечания

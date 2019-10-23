@@ -57,9 +57,6 @@ class Prices extends Component {
                                 Название
                             </th>
                             <th>
-                                Изменение
-                            </th>
-                            <th>
                                 Удаление
                             </th>
                         </tr>

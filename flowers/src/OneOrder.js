@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import axios from 'axios';
+
 
 class OneOrder extends Component{
 
     constructor(props) {
         super(props);
+        this.deleteOrderType = this.deleteOrderType.bind(this);
+    }
+
+    deleteOrderType(e) {
+        e.preventDefault();
+        console.log(this.props.order);
+        axios
+            .post('https://flora-vitebsk.herokuapp.com/deleteOrder' , this.props.order)
     }
 
   render() {
@@ -14,7 +24,7 @@ class OneOrder extends Component{
                 {this.props.order.date}
             </td>
             <td className="text-center">
-                {this.props.order.time}
+                {this.props.order.timeFrom + '-' + this.props.order.timeTo}
             </td>
             <td className="text-center">
                 {this.props.order.orderList}
@@ -44,12 +54,12 @@ class OneOrder extends Component{
                 {this.props.order.notes}
             </td>
             <td className="text-center">
-                <Link to={'/edit/' + 1}>
+                <Link to={'/edit/' + this.props.order.id}>
                     <i className="fas fa-edit"></i>
                 </Link>
             </td>
             <td className="text-center">
-                <i className="fas fa-trash-alt"></i>
+                <i className="fas fa-trash-alt" onClick={this.deleteOrderType}></i>
             </td>
         </tr>
       )

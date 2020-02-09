@@ -4,12 +4,23 @@
   background-color: #FFC618;
 }
 
+@media (min-width: 300px) and (max-width: 700px) {
+  .menu{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 .search {
   margin: 20px 0px 20px 0px;
 }
 
 .create {
   margin-top: 20px;
+}
+
+.invalid-data {
+  color: red;
 }
 
 .menu {
@@ -24,8 +35,15 @@
   font-size: 18px;
 }
 
-.menu button:hover {
-  color: #FFC618;
+.date-tr {
+  width: 110px;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    width: 100%;
 }
 
 .header-info {
@@ -47,11 +65,16 @@ th {
 }
 
 .ml-5px {
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 .pl-10px {
   padding-left: 10px!important;
+}
+
+.pl-0px {
+  padding-left: 0px!important;
+  padding-right: 0px !important;
 }
 
 .content-center p {
@@ -73,16 +96,29 @@ th {
   margin-bottom: 20px;
 }
 
+.mt-10px {
+  margin-top: 10px!important;
+}
+
+li {
+  font-size: 20px;
+}
+
 th {
   font-size: 15px;
 }
 
+
 td {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .fa-edit {
   color: black;
+}
+
+.fa-main {
+  color: white!important;
 }
 
 .rw-btn {
@@ -97,6 +133,92 @@ td {
   font-size: 20px;
 }
 
+.spinner-block {
+  height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.find-input {
+  margin-top: 10px;
+}
+
+.ml-0px {
+  margin-left: 0px!important;
+}
+
+.rw-multiselect-tag {
+  margin-bottom: calc(2 * (0.279335em));
+}
+
+.status-green {
+  background-color: green;
+
+}
+
+.status-red {
+  background-color: red;
+}
+
+.get-file {
+  margin-top: 20px;
+}
+
+.order-done {
+  background-color: #D6FFDD;
+}
+
+.red-letters {
+  color: red;
+}
+
+.order-done:hover {
+  background-color: #9BFF99;
+}
+
+.order-ready {
+  background-color: #F9FFAD;
+}
+
+.order-ready:hover {
+  background-color: #F8E85D;
+}
+
+.order-accepted:hover {
+  background-color: #C2C7C4;
+}
+
+
+table th{
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0px;
+}
+
+.table-div {
+    
+}
+
+.stbody {
+  height: calc(100vh - 250px);;
+  width: 100%;
+}
+
+.pay-done {
+  background-color: lightgreen;
+}
+
+.pay-false {
+  background-color: red;
+}
+
+/* .aaa {
+  max-height: 200px;
+} */
 
 
 
